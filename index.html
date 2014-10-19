@@ -26,7 +26,7 @@
 					var start = element.scrollTop,
 					change = to - start,
 					currentTime = 0,
-					increment = 20;
+					increment = 10; //20
 					var animateScroll = function(){
 						currentTime += increment;
 						var val = Math.easeInOutQuad(currentTime, start, change, duration);
@@ -37,20 +37,50 @@
 					};
 					animateScroll();
 				}
+				function arrow(e) {
+					e.preventDefault(); 
+					var p = 0;
+					for(var i = 0, l = indexArray.length; i < l; i++) {
+						if(indexArray[i].className == 'active') {
+							p = i;
+						}
+					}
+
+					var key = e.keyCode;
+					if(key == 38 && p > 0) { // up key
+						p--;
+						setClass(p);
+						var position = getPosition(pageArray[p]);
+						scrollTo(document.documentElement, position.top, 650);
+					} else if(key == 40 && p < (indexArray.length-1)) { // down key
+						p++;
+						setClass(p);
+						var position = getPosition(pageArray[p]);
+						scrollTo(document.documentElement, position.top, 650);
+					}
+				}
 				function navigate(e) {
 					e.preventDefault();
 					var h = Array.prototype.indexOf.call(this.parentNode.children, this);
-					//var target = pageArray[h];
-					//target.scrollIntoView();
-					//var position = getPosition(pageArray[h]);
+					setClass(h);
 					var position = getPosition(pageArray[h]);
 					scrollTo(document.documentElement, position.top, 650);
+				}
+				function setClass(n) {
+					for(var i = 0, l = indexArray.length; i < l; i++) {
+						if(i == n) {
+							indexArray[i].className = 'active';
+						} else {
+							indexArray[i].className = '';
+						}
+					}
 				}
 				var index = document.getElementById('index');
 				var pageArray = document.getElementsByClassName('page');
 				var indexArray = index.getElementsByTagName('a');
+				scrollTo(document.documentElement, 0, 650);
 
-				
+				document.addEventListener('keydown', arrow, false);
 
 				for(var i = 0, l = indexArray.length; i < l; i++) {
 					indexArray[i].addEventListener('click', navigate, false);
@@ -62,19 +92,20 @@
 	<body>
 		<div id="about" class="page">
 			<div class="container">
-				<h1>QOTE</h1>
+				<div><h1>QOTE</h1></div>
+				<h2>Minimalist. Efficient. Harmonious. Timeless.</h2>
 			</div>
 		</div>
-		<div id="products" class="page" style="background-color: yellow;"></div>
 		<div id="work" class="page"></div>
 		<div id="references" class="page"></div>
+		<div id="products" class="page" style="background-color: yellow;"></div>
 		<div id="contact" class="page"></div>
 
 		<div id="index">
 			<a href="#about" class="active"><span>About</span></a>
-			<a href="#products"><span>Products</span></a>
 			<a href="#work"><span>Work</span></a>
 			<a href="#references"><span>References</span></a>
+			<a href="#products"><span>Products</span></a>
 			<a href="#contact"><span>Contact</span></a>
 		</div>
 	</body>

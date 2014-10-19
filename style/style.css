@@ -23,6 +23,8 @@
 	src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(fonts/OpenSans600.woff) format('woff');
 }
 * { transition: 0.2s linear;}
+::-moz-selection { color: #fefefe; background: #e77d27; }
+::selection      { color: #fefefe; background: #e77d27; } 
 
 html, body { min-height: 100%; height: 100%;line-height: 100%; width: 100%; padding: 0 !important; margin: 0 !important; }
 body {
@@ -83,17 +85,43 @@ a { color: #efefef; text-decoration: none; }
 
 }
 #about .container {
-	width: 80%;
-	max-width: 1000px;
+	width: 100%;
+	/*max-width: 1000px;*/
 	text-align: center;
 	margin: auto;
 	position: absolute;
-	height: 500px;
+	font-size: 1em;
+	height: 6.2em;
 	position: absolute;
+
 	top: 0; left: 0; right: 0; bottom: 0;
 }
-#about .container h1 {
+
+#about .container div {
+	width: 100%;
+	background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMNPlek2wAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=') center center repeat-x;
+	margin-bottom: 30px;
+}
+
+#about .container div h1 {
+	display: inline-block;
+	margin: 0 auto;
 	font-size: 3em;
+	letter-spacing: 0.2em;
 	font-family: 'Open Sans';
 	font-weight: 300;
+	height: 1em;
+	line-height: 1em;
+	background: #1c1c1c;
+	padding: 0 50px;
+}
+
+
+#about .container h2 {
+	font-size: 1.2em;
+	font-family: 'Open Sans';
+	font-weight: 400;
+	line-height: 1.2em;
+	letter-spacing: 0.4em;
+	color: #777;
 }
