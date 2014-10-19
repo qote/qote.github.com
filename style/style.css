@@ -1,0 +1,99 @@
+@font-face {
+	font-family: 'Droid Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Droid Sans'), local('DroidSans'), url(fonts/DroidSans.woff) format('woff');
+}
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Open Sans Light'), local('OpenSans-Light'), url(fonts/OpenSans300.woff) format('woff');
+}
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Open Sans'), local('OpenSans'), url(fonts/OpenSans400.woff) format('woff');
+}
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(fonts/OpenSans600.woff) format('woff');
+}
+* { transition: 0.2s linear;}
+
+html, body { min-height: 100%; height: 100%;line-height: 100%; width: 100%; padding: 0 !important; margin: 0 !important; }
+body {
+	font-family: 'Open Sans', Calibri, Courier, monospace;
+	font-weight: 300;
+	background: #1c1c1c;
+	background-size: 100%;
+	min-height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	color: #efefef;
+}
+
+a { color: #efefef; text-decoration: none; }
+
+#index {
+	position: fixed;
+	height: 150px;
+	width: 30px;
+	top: 0; bottom: 0; right: 0;
+	margin: auto;
+	padding: 0;
+}
+
+#index a {
+	display: block;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	background: url('images/dot.svg') center center no-repeat;
+	background-size: 40%;
+	opacity: 0.5;
+}
+#index .active, #index a:hover { background-size: 60%; opacity: 0.9; }
+
+#index a span {
+	display: none;
+	padding: 5px 10px;
+	position: absolute;
+	right: 30px;
+	margin: auto;
+	height: 20px; line-height: 20px;
+	background: rgba(0,0,0, 0.9);
+	border-radius: 2px;
+	opacity: 0;
+	font-size: 0.9em;
+}
+#index a:hover span {
+	display: block;
+	opacity: 1;
+	
+}
+
+.page { height: 100%; max-height: 100%; width: 100%; }
+#about {
+
+}
+#about .container {
+	width: 80%;
+	max-width: 1000px;
+	text-align: center;
+	margin: auto;
+	position: absolute;
+	height: 500px;
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+}
+#about .container h1 {
+	font-size: 3em;
+	font-family: 'Open Sans';
+	font-weight: 300;
+}

@@ -2,13 +2,80 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Title</title>
+		<title>qote.fr</title>
 		<link id="favicon" rel="shortcut icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<script type="text/javascript" src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="style/style.css" />
+		<script>
+			window.onload = function() {
+				Math.easeInOutQuad = function (t, b, c, d) {
+					t /= d/2;
+					if (t < 1) return c/2*t*t + b;
+					t--;
+					return -c/2 * (t*(t-2) - 1) + b;
+				};
+				function getPosition(element){
+					var top = 0, left = 0;
+					while (element) {
+						left += element.offsetLeft;
+						top += element.offsetTop;
+						element = element.offsetParent;
+					}
+					return {'left':left, 'top':top};
+				}
+				function scrollTo(element, to, duration) {
+					var start = element.scrollTop,
+					change = to - start,
+					currentTime = 0,
+					increment = 20;
+					var animateScroll = function(){
+						currentTime += increment;
+						var val = Math.easeInOutQuad(currentTime, start, change, duration);
+						element.scrollTop = val; 
+						if(currentTime < duration) {
+							setTimeout(animateScroll, increment);
+						}
+					};
+					animateScroll();
+				}
+				function navigate(e) {
+					e.preventDefault();
+					var h = Array.prototype.indexOf.call(this.parentNode.children, this);
+					//var target = pageArray[h];
+					//target.scrollIntoView();
+					//var position = getPosition(pageArray[h]);
+					var position = getPosition(pageArray[h]);
+					scrollTo(document.documentElement, position.top, 650);
+				}
+				var index = document.getElementById('index');
+				var pageArray = document.getElementsByClassName('page');
+				var indexArray = index.getElementsByTagName('a');
+
+				
+
+				for(var i = 0, l = indexArray.length; i < l; i++) {
+					indexArray[i].addEventListener('click', navigate, false);
+				}
+			};
+		</script>
 		
 	</head>
 	<body>
-		
+		<div id="about" class="page">
+			<div class="container">
+				<h1>QOTE</h1>
+			</div>
+		</div>
+		<div id="products" class="page" style="background-color: yellow;"></div>
+		<div id="work" class="page"></div>
+		<div id="references" class="page"></div>
+		<div id="contact" class="page"></div>
+
+		<div id="index">
+			<a href="#about" class="active"><span>About</span></a>
+			<a href="#products"><span>Products</span></a>
+			<a href="#work"><span>Work</span></a>
+			<a href="#references"><span>References</span></a>
+			<a href="#contact"><span>Contact</span></a>
+		</div>
 	</body>
 </html>
