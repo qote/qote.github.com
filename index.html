@@ -38,7 +38,11 @@
 					animateScroll();
 				}
 				function arrow(e) {
-					e.preventDefault(); 
+					var key = e.keyCode;
+					if(key == 38 || key == 40) {
+						e.preventDefault(); 
+					}
+
 					var p = 0;
 					for(var i = 0, l = indexArray.length; i < l; i++) {
 						if(indexArray[i].className == 'active') {
@@ -46,7 +50,6 @@
 						}
 					}
 
-					var key = e.keyCode;
 					if(key == 38 && p > 0) { // up key
 						p--;
 						setClass(p);
@@ -59,6 +62,36 @@
 						scrollTo(document.documentElement, position.top, 650);
 					}
 				}
+
+				var lastWheel = 0;
+				function wheel(e) {
+					e.preventDefault();
+					if((Date.now() - lastWheel) > 650) {
+						var p = 0;
+						for(var i = 0, l = indexArray.length; i < l; i++) {
+							if(indexArray[i].className == 'active') {
+								p = i;
+							}
+						}
+
+						//console.log(e.wheelDelta || -e.detail);
+						var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+						//var delta = (e.wheelDelta || -e.detail);
+						if(delta == -1 && p < (indexArray.length-1)) { //delta == -1
+							p++;
+							setClass(p);
+							var position = getPosition(pageArray[p]);
+							scrollTo(document.documentElement, position.top, 650);
+						} else if(delta == 1 && p > 0) { //delta == 1
+							p--;
+							setClass(p);
+							var position = getPosition(pageArray[p]);
+							scrollTo(document.documentElement, position.top, 650);
+						}
+						lastWheel = Date.now();
+					}
+				}
+
 				function navigate(e) {
 					e.preventDefault();
 					var h = Array.prototype.indexOf.call(this.parentNode.children, this);
@@ -80,7 +113,11 @@
 				var indexArray = index.getElementsByTagName('a');
 				scrollTo(document.documentElement, 0, 650);
 
+
 				document.addEventListener('keydown', arrow, false);
+				document.addEventListener("mousewheel", wheel, false);
+				document.addEventListener('DOMMouseScroll', wheel, false);
+				
 
 				for(var i = 0, l = indexArray.length; i < l; i++) {
 					indexArray[i].addEventListener('click', navigate, false);
