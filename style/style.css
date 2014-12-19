@@ -45,11 +45,15 @@ a { color: #efefef; text-decoration: none; }
 #index {
 	position: fixed;
 	height: 150px;
-	width: 30px;
+
 	top: 0; bottom: 0; right: 0;
 	margin: auto;
 	padding: 0;
+
+	list-style: none;
 }
+
+#index li { display: block; height: 30px; }
 
 #index a {
 	display: block;
@@ -60,10 +64,10 @@ a { color: #efefef; text-decoration: none; }
 	background-size: 40%;
 	opacity: 0.5;
 }
-#index .active, #index a:hover { background-size: 60%; opacity: 0.9; }
+#index .active, #index li:hover a { background-size: 60%; opacity: 0.9; }
 
 #index a span {
-	display: none;
+
 	padding: 5px 10px;
 	position: absolute;
 	right: 30px;
@@ -74,7 +78,7 @@ a { color: #efefef; text-decoration: none; }
 	opacity: 0;
 	font-size: 0.9em;
 }
-#index a:hover span {
+#index li:hover span {
 	display: block;
 	opacity: 1;
 	
@@ -125,3 +129,15 @@ a { color: #efefef; text-decoration: none; }
 	letter-spacing: 0.4em;
 	color: #777;
 }
+
+
+
+#work {  }
+#work #work-list { width: 50%; height: 100%; float: left; }
+#work #work-list #work-sort {  }
+#work #work-list ul { padding: 30px; list-style: none; }
+#work #work-list li { width: 90px; height: 90px; display: inline-block; background: rgba(0,0,0, 0.5); }
+#work #work-list li a { width: 90px; height: 90px; display: block; }
+
+#work #work-item { width: 50%; height: 100%; float: left; }
+#work #work-list div { padding: 30px; }

@@ -94,7 +94,8 @@
 
 				function navigate(e) {
 					e.preventDefault();
-					var h = Array.prototype.indexOf.call(this.parentNode.children, this);
+					//var h = Array.prototype.indexOf.call(this.parentNode.parentNode.children, this);
+					var h = this.getAttribute('data-uid');
 					setClass(h);
 					var position = getPosition(pageArray[h]);
 					scrollTo(document.documentElement, position.top, 650);
@@ -111,7 +112,7 @@
 				var index = document.getElementById('index');
 				var pageArray = document.getElementsByClassName('page');
 				var indexArray = index.getElementsByTagName('a');
-				scrollTo(document.documentElement, 0, 650);
+				//scrollTo(document.documentElement, 0, 650);
 
 
 				document.addEventListener('keydown', arrow, false);
@@ -121,6 +122,7 @@
 
 				for(var i = 0, l = indexArray.length; i < l; i++) {
 					indexArray[i].addEventListener('click', navigate, false);
+					indexArray[i].setAttribute('data-uid', i);
 				}
 			};
 		</script>
@@ -133,17 +135,42 @@
 				<h2>Minimalist. Efficient. Harmonious. Timeless.</h2>
 			</div>
 		</div>
-		<div id="work" class="page"></div>
+		<div id="work" class="page">
+			<div id="work-list">
+				<ul>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+				</ul>
+			</div>
+			<div id="work-item"></div>
+		</div>
 		<div id="references" class="page"></div>
 		<div id="products" class="page" style="background-color: yellow;"></div>
 		<div id="contact" class="page"></div>
 
 		<div id="index">
-			<a href="#about" class="active"><span>About</span></a>
-			<a href="#work"><span>Work</span></a>
-			<a href="#references"><span>References</span></a>
-			<a href="#products"><span>Products</span></a>
-			<a href="#contact"><span>Contact</span></a>
+			<li><a href="#about" class="active"><span>About</span></a></li>
+			<li><a href="#work"><span>Work</span></a></li>
+			<li><a href="#references"><span>References</span></a></li>
+			<li><a href="#products"><span>Products</span></a></li>
+			<li><a href="#contact"><span>Contact</span></a></li>
 		</div>
 	</body>
 </html>
