@@ -95,6 +95,11 @@ function initMap() {
 		.openPopup();
 
 }
+window.onpageshow = function (event) {
+	if(event.persisted) {
+		document.body.dataset.status = 'loaded';
+	}
+};
 
 function setPageChangeEvent(a) {
 	a.addEventListener('click', function(e) {
@@ -105,7 +110,8 @@ function setPageChangeEvent(a) {
 		}
 		document.body.dataset.status = 'loading';
 		setTimeout(function() {
-			document.body.dataset.status = 'loaded';
+			//document.body.dataset.status = 'loaded';
+			//document.body.dataset.status = 'unloaded';
 			if(document.getElementById('menu-items').contains(a)) {
 				a.className = '';
 			}
