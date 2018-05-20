@@ -105,6 +105,7 @@ function setPageChangeEvent(a) {
 	a.addEventListener('click', function(e) {
 		e.stopPropagation();
 		e.preventDefault();
+		document.getElementById('menu-state').checked = false;
 		if(document.getElementById('menu-items').contains(a)) {
 			a.className = 'menu-selected';
 		}
