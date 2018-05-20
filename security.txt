@@ -1,0 +1,4 @@
+# Not much to see here!
+# If you find a security issue you can always report it to
+Contact: contact@qote.fr or https://qote.fr/contact/
+Encryption: https://qote.fr/qote_public_key.asc

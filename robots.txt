@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /humans.txt
+Disallow: /security.txt
+Disallow: /qote_public_key.asc
